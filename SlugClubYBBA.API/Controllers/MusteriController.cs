@@ -21,6 +21,11 @@ namespace SlugClubYBBA.API.Controllers
             _authRepository = authRepository;
             _appRepository = appRepository;
         }
+        public ActionResult GetAll()
+        {
+            var musteris = _appRepository.GetMusteris();
+            return Ok(musteris);
+        }
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody]MusteriRegisterDto musteriRegisterDto)
         {
@@ -103,5 +108,6 @@ namespace SlugClubYBBA.API.Controllers
                 return false;
             return true;
         }
+
     }
 }
