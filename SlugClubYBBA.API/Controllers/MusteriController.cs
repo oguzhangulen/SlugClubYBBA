@@ -21,6 +21,7 @@ namespace SlugClubYBBA.API.Controllers
             _authRepository = authRepository;
             _appRepository = appRepository;
         }
+        [HttpGet]
         public ActionResult GetAll()
         {
             var musteris = _appRepository.GetMusteris();
@@ -38,7 +39,7 @@ namespace SlugClubYBBA.API.Controllers
             {
                 Random rnd = new Random();
                 myRandomNo = rnd.Next(10000000, 99999999);
-                if (UniqueHesapNo(myRandomNo.ToString()))
+                if (!UniqueHesapNo(myRandomNo.ToString()))
                     break;
             }
             Musteri musteri = new Musteri

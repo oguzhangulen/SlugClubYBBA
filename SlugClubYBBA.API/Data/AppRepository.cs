@@ -42,7 +42,7 @@ namespace SlugClubYBBA.API.Data
 
         public List<Musteri> GetMusteris()
         {
-            var musteris = _context.Musteri.Include(c => c.Hesaps).ToList();
+            var musteris = _context.Musteri.ToList();
             return musteris;
         }
 

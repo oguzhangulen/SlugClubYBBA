@@ -9,19 +9,21 @@ namespace SlugClubYBBA.API.Models
     public class HavaleVirman
     {
         public int Id { get; set; }
-        [ForeignKey("GonderenHesap"), Column(Order = 0)]
+        [Column(Order = 0)]
         public string GonderenHesapNo { get; set; }
-        [ForeignKey("GonderenHesap"), Column(Order = 1)]
+        [Column(Order = 1)]
 
         public int GonderenHesapEkno { get; set; }
-        [ForeignKey("AliciHesap"), Column(Order = 2)]
+        [Column(Order = 2)]
         public string AliciHesapNo { get; set; }
 
-        [ForeignKey("AliciHesap"), Column(Order = 3)]
+        [Column(Order = 3)]
 
         public int AliciHesapEkno { get; set; }
-        public Hesap GonderenHesap { get; set; }
-        public Hesap AliciHesap { get; set; }
+        [ForeignKey("GonderenHesapNo,GonderenHesapEkno")]
+        public virtual Hesap GonderenHesap { get; set; }
+        [ForeignKey("AliciHesapNo,AliciHesapEkno")]
+        public virtual Hesap AliciHesap { get; set; }
         public decimal Miktar { get; set; }
         public DateTime Time { get; set; }
         public string Tur { get; set; }
